@@ -1,37 +1,23 @@
-# Forge Hello World
+# Atlassian Forge app
 
-This project contains a Forge app written in Javascript that displays `Hello World!` in a Jira issue glance. 
+![Current Time Preview Thumbnail](current-time-preview-thumbnail.jpg)
 
-See [developer.atlassian.com/platform/forge/](https://developer.atlassian.com/platform/forge) for documentation and tutorials explaining Forge.
+Welcome to my plugin for Atlassian's Jira issue page on the right side called ***Current Time***
 
-## Requirements
+## Why Current Time 
 
-See [Set up Forge](https://developer.atlassian.com/platform/forge/set-up-forge/) for instructions to get set up.
+Current Time shows the current time for the Reporter on an issue ticket and/or the Assignee. This is beneficial for those working with others from around the world. No more asking ***"What time is it in Hong Kong?"*** in google when you can simply click on the link. 
 
-## Quick start
+## How was it built 
 
-- Modify your app by editing the `src/index.jsx` file.
+This plugin was created with Atlassian Forge by simply utilizing their Forge UI API. I've also added momentjs to retrieve and format the time. So basically, momentjs put in 90% of the work. Thank you MomentJs. 
 
-- Build and deploy your app by running:
-```
-forge deploy
-```
+## To Add it to your app
 
-- Install your app in an Atlassian site by running:
-```
-forge install
-```
+To be able to use this app, you need to have `@forge/cli`
 
-- Develop your app by running `forge tunnel` to proxy invocations locally:
-```
-forge tunnel
-```
+`npm install -g @forge/cli`
 
-### Notes
-- Use the `forge deploy` command when you want to persist code changes.
-- Use the `forge install` command when you want to install the app on a new site.
-- Once the app is installed on a site, the site picks up the new app changes you deploy without needing to rerun the install command.
+Download everything and navigate to the folder 
 
-## Support
-
-See [Get help](https://developer.atlassian.com/platform/forge/get-help/) for how to get help and provide feedback.
+`forge install` And follow the steps to add it to your Jira setup. 
