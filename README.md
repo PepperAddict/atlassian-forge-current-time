@@ -10,7 +10,7 @@ Current Time shows the current time for the Reporter on an issue ticket and/or t
 
 ## How was it built 
 
-This plugin was created with Atlassian Forge by simply utilizing their Forge UI API. I've also added momentjs to retrieve and format the time. So basically, momentjs put in 90% of the work. Thank you MomentJs. 
+This plugin was created with [Atlassian Forge](https://www.atlassian.com/forge) by simply utilizing their Forge UI API. I've also added [momentjs](https://momentjs.com/timezone/) to retrieve and format the time.
 
 ## To Add it to your app
 
@@ -18,6 +18,4 @@ To be able to use this app, you need to have `@forge/cli`
 
 `npm install -g @forge/cli`
 
-Download everything and navigate to the folder 
-
-`forge install` And follow the steps to add it to your Jira setup. 
+Download this plugin repository and navigate inside where `manifest.yml` is located and in command line type: `forge install` and follow the steps to add it to your Jira environment. 
