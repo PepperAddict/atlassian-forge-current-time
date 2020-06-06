@@ -1,0 +1,13 @@
+modules:
+  'jira:issueGlance':
+    - key: current-time-glance
+      function: main
+      title: Current Time
+      description: Show time for assignee and creator.
+      label: Current Time
+  function:
+    - key: main
+      handler: index.run
+app:
+  id: 'ari:cloud:ecosystem::app/6d647d18-5332-462b-a87f-241f834dcdc8'
+  name: current-time
