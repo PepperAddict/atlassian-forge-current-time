@@ -8,7 +8,8 @@ import ForgeUI, {
   Avatar,
   Table,
   Cell,
-  Row
+  Row,
+  Button
 } from '@forge/ui';
 var moment = require('moment-timezone');
 import api from '@forge/api';
@@ -28,18 +29,37 @@ const App = () => {
     } else if (which === "assignee") {
       return data.fields.assignee
     }
-
   }
 
-  const [creatorinfo, setCreator] = useState(async () => await creator(issueKey, "creator"))
-  const [creatorTime] = useState((creatorinfo) ? moment().tz(creatorinfo.timeZone).format('LLLL') : null)
-  const [assignee, setAssignee] = useState(async () => await creator(issueKey, "assignee"))
-  const [assigneeTime] = useState((assignee) ? moment().tz(assignee.timeZone).format('LLLL') : null)
+  const timeZone = (which, format = true) => {
+    const now = moment.utc();
+
+    return (format) ? moment().tz(which).format('LLLL') : moment.tz.zone(which).utcOffset(now)
+  }
+
+  const [creatorinfo] = useState(async () => await creator(issueKey, "creator"))
+  const [assignee] = useState(async () => await creator(issueKey, "assignee"))
+
+
+
+  const [time, setTime] = useState({
+    creator: timeZone(creatorinfo.timeZone),
+    assignee: (assignee) && timeZone(assignee.timeZone)
+  })
+  const [ugly] = useState(timeZone(creatorinfo.timeZone, false))
+  const [uglytwo] = useState((assignee) && timeZone(assignee.timeZone, false))
+  const ifTwo = (assignee) && ((ugly - uglytwo) / 60)
+  const positive = Math.abs(ifTwo)
+  const showNumber = (positive > 0) && positive.toString()
+
+
 
   return (
     <Fragment>
       {(creatorinfo) && <Fragment>
+
         <Text>***Reporter's Time***</Text>
+      
         <Table>
           <Row>
             <Cell>
@@ -53,7 +73,7 @@ const App = () => {
           </Row>
           <Row>
             <Cell>
-              <Text content={creatorTime} />
+              <Text content={time.creator} />
             </Cell>
 
 
@@ -78,10 +98,16 @@ const App = () => {
           </Row>
           <Row>
             <Cell>
-              <Text content={assigneeTime} />
+              <Text content={time.assignee} />
             </Cell>
           </Row>
         </Table>
+
+        {showNumber && <Text content={showNumber + ' hours time difference'} /> }
+        <Button onClick={() => setTime({
+          creator: (creatorinfo) && timeZone(creatorinfo.timeZone),
+          assignee: (assignee) && timeZone(assignee.timeZone)
+        })} text="Get Current Time" />
       </Fragment>}
 
     </Fragment>
