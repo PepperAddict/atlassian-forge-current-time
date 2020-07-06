@@ -1,3 +1,6 @@
+permissions:
+  scopes:
+    - "read:jira-work"
 modules:
   'jira:issueGlance':
     - key: current-time-glance
@@ -8,10 +11,6 @@ modules:
   function:
     - key: main
       handler: index.run
-  scheduledTrigger:
-    - key: current-time-trigger
-      function: main
-      schedule: hourly
 app:
   id: 'ari:cloud:ecosystem::app/6d647d18-5332-462b-a87f-241f834dcdc8'
   name: current-time
