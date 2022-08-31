@@ -15,6 +15,6 @@
   "dependencies": {
     "@forge/api": "^0.2.0",
     "@forge/ui": "^0.3.1",
-    "moment-timezone": "^0.5.31"
+    "moment-timezone": "^0.5.35"
   }
 }
